@@ -27,7 +27,8 @@ app.use("/api/tutor", tutorRoutes);
 const server = app.listen(port, () =>
   console.log(`server started on port ${port}`)
 );
-
+// app.use(errorHandler);
+// app.use(notFound);
 import { Server } from "socket.io";
 
 const io = new Server(server, {
@@ -76,6 +77,3 @@ io.on("connection", (socket) => {
     socket.leave(userData._id);
   });
 });
-
-app.use(errorHandler);
-app.use(notFound);
