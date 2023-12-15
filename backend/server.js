@@ -24,16 +24,6 @@ app.use("/api", userRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/tutor", tutorRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  const __dirname = path.resolve();
-
-  app.use(express.static(path.join(__dirname, "frontend/dist")));
-
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
-  });
-}
-
 const server = app.listen(port, () =>
   console.log(`server started on port ${port}`)
 );
